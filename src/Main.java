@@ -19,25 +19,39 @@ public class Main {
             System.out.println("2. Mostrar candidatas");
             System.out.println("3. Buscar por nombre");
             System.out.println("4. Buscar por distrito");
-            System.out.println("5. Votar por candidata");
-            System.out.println("6. Simular votos");
-            System.out.println("7. Mostrar ganadora");
-            System.out.println("8. Salir");
+            System.out.println("5. Menu votacion");
+            System.out.println("6. Mostrar ganadora");
+            System.out.println("7. Salir");
             System.out.print("Ingrese una opcion: ");
             opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 1 -> registrarCandidata(sc, lista);
-                case 2 -> mostrarCandidatas(lista);
-                case 3 -> buscarPorNombre(sc, lista);
-                case 4 -> buscarPorDistrito(sc, lista);
-                case 5 -> votar(sc, lista, votos);
-                case 6 -> simularVotos(lista, votos);
-                case 7 -> mostrarGanadora(lista, votos);
-                case 8 -> System.out.println("Saliendo...");
-                default -> System.out.println("OPCION INVALIDA");
+                case 1: registrarCandidata(sc, lista);
+                case 2: mostrarCandidatas(lista);
+                case 3: buscarPorNombre(sc, lista);
+                case 4: buscarPorDistrito(sc, lista);
+                case 5:
+                    System.out.println("-----------|| Menu Votacion ||-----------");
+                    System.out.println("1. Votar Manualmente");
+                    System.out.println("2. Simular Votos");
+                    System.out.println("3. Importar Votos");
+                    System.out.print("Ingrese una opcion: ");
+                    int opcionMenu = sc.nextInt();
+                    if (opcionMenu == 1) {
+                        votar(sc, lista, votos);
+                    }else if (opcionMenu == 2) {
+                        simularVotos(lista, votos);
+                    }else if (opcionMenu == 3) {
+                        System.out.println("Ayuda no se que hacer aqui");
+                    }else {
+                        System.out.println("Opcion Incorrecta");
+                    }
+                    break;
+                case 6: mostrarGanadora(lista, votos);
+                case 7: System.out.println("Saliendo...");
+                default: System.out.println("OPCION INVALIDA");
             }
-        } while (opcion != 8);
+        } while (opcion != 7);
     }
 
     public static void registrarCandidata(Scanner sc, ArrayList<Candidata> lista) {
@@ -143,7 +157,7 @@ public class Main {
     public static void simularVotos(ArrayList<Candidata> lista, Map<Integer, Integer> votos) {
         System.out.println("-----------|| Etapa de votacion ||-----------");
         if (lista.isEmpty()) {
-            System.out.println("Aún no hay candidatas.");
+            System.out.println("Aun no hay candidatas.");
             return;
         }
         Random r = new Random();
@@ -152,7 +166,7 @@ public class Main {
             int id = lista.get(pos).getId();
             votos.put(id, votos.getOrDefault(id, 0) + 1);
         }
-        System.out.println("50 votos simulados.");
+        System.out.println("50 votos simulados");
     }
 
     public static void mostrarGanadora(ArrayList<Candidata> lista, Map<Integer, Integer> votos) {
