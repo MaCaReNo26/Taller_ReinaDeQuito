@@ -26,10 +26,10 @@ public class Main {
             opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 1: registrarCandidata(sc, lista);
-                case 2: mostrarCandidatas(lista);
-                case 3: buscarPorNombre(sc, lista);
-                case 4: buscarPorDistrito(sc, lista);
+                case 1: registrarCandidata(sc, lista); break;
+                case 2: mostrarCandidatas(lista);break;
+                case 3: buscarPorNombre(sc, lista);break;
+                case 4: buscarPorDistrito(sc, lista);break;
                 case 5:
                     System.out.println("-----------|| Menu Votacion ||-----------");
                     System.out.println("1. Votar Manualmente");
@@ -47,8 +47,8 @@ public class Main {
                         System.out.println("Opcion Incorrecta");
                     }
                     break;
-                case 6: mostrarGanadora(lista, votos);
-                case 7: System.out.println("Saliendo...");
+                case 6: mostrarGanadora(lista, votos);break;
+                case 7: System.out.println("Saliendo...");break;
                 default: System.out.println("OPCION INVALIDA");
             }
         } while (opcion != 7);
